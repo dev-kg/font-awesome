@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "cd ../../; node ./node_modules/font-awesome/build.js"
+    "build": "cd ../../; node ./node_modules/font-awesome/build.js",
+    "add-fa": "cd ../../; node ./node_modules/font-awesome/add.js"
   },
   "dependencies": {
     "npc": "^0.0.1"
