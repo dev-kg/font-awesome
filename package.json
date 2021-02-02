@@ -7,11 +7,6 @@
     "build": "node ./src/build"
   },
   "dependencies": {
-    "@types/styled-components": "^5.1.7",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "styled-components": "^5.2.1"
+    "npc": "^0.0.1"
   }
 }
