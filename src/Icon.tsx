@@ -3,9 +3,8 @@ import { icons } from "@/icons"
 
 import { IconType, IconProps, IconFn } from "./model"
 import { IconStyled } from "./IconStyled"
-import { copyToFontAwesomeDirectory } from "./functions"
 
-export function Icon<Type extends IconType>(props: IconProps<Type>): JSX.Element | null {
+export function Icon<Type extends IconType>(props: IconProps<Type>): JSX.Element {
   const { type = "light", name } = props
   const Svg: IconFn = icons[`fa${type.charAt(0)}-${name}`]
   if (Svg) {
@@ -15,7 +14,6 @@ export function Icon<Type extends IconType>(props: IconProps<Type>): JSX.Element
       </IconStyled>
     )
   } else {
-    copyToFontAwesomeDirectory(type, name)
-    return null
+    throw new Error(`yarn add-fa fa${type.charAt(0)}-${name}`)
   }
 }
