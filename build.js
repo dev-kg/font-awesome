@@ -10,7 +10,11 @@ async function copyFiles(from, to) {
 }
 
 async function build () {
-  await copyFiles("./node_modules/fontAwesome/src", "./client/src/fontAwesome")
-  await copyFiles("./node_modules/fontAwesome/icons", "./client/src/icons")
+  try {
+    await copyFiles("./node_modules/font-awesome/src", "./src/font-awesome")
+    await copyFiles("./node_modules/font-awesome/icons", "./src/icons")
+  } catch(err) {
+    console.log(err)
+  }
 }
 build()

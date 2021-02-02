@@ -1,24 +1,33 @@
 import fs from "fs"
 
-async function readFile(path) {
-    return new Promise((resolve, reject) => {
-      fs.readFile(path, 'utf-8', (err, str) => {
-        if (err) reject(err)
-        else resolve(str)
-      })
+import { Brands, IconType, Light, Regular, Solid } from "./model"
+
+async function readFile(path: string): Promise<string> {
+  return new Promise((resolve: (value: string) => void, reject: (error: NodeJS.ErrnoException) => void) => {
+    fs.readFile(path, 'utf-8', (err: NodeJS.ErrnoException | null, str: string) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(str)
+      }
     })
+  })
 }
 
-async function writeFile(path, data) {
-return new Promise((resolve, reject) => {
-    fs.writeFile(path, data, 'utf-8', (err) => {
-    if (err) reject(err)
-    else resolve(undefined)
+async function writeFile(path: string, data: string): Promise<undefined> {
+  return new Promise((resolve: (value: undefined) => void, reject: (error: NodeJS.ErrnoException) => void) => {
+    fs.writeFile(path, data, 'utf-8', (err: NodeJS.ErrnoException | null) => {
+      if (err) {
+        reject(err)
+      }
+      else {
+        resolve(undefined)
+      }
     })
-})
+  })
 }
 
-export async function copyToFontAwesomeDirectory(type, name) {
-    const file = await readFile(`./src/${type}/${name}`)
-    writeFile(`./client/src/icons/${type}-${name}.tsx`, file)
+export async function copyToFontAwesomeDirectory(type: IconType, name: Brands | Light | Regular | Solid): Promise<undefined> {
+  const file = await readFile(`./src/${type}/${name}.tsx`)
+  return writeFile(`./src/icons/fa${type.charAt(0)}-${name}.tsx`, file)
 }
