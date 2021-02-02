@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "node ./src/build"
+    "postinstall": "cd ../../; node ./node_modules/font-awesome/build.js"
   },
   "dependencies": {
     "npc": "^0.0.1"

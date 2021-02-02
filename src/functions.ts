@@ -20,5 +20,5 @@ return new Promise((resolve, reject) => {
 
 export async function copyToFontAwesomeDirectory(type, name) {
     const file = await readFile(`./src/${type}/${name}`)
-    writeFile(`./src/icons/${type}-${name}.tsx`, file)
+    writeFile(`./client/src/icons/${type}-${name}.tsx`, file)
 }
