@@ -1,35 +1,27 @@
 import React from "react"
 
-import * as brands from "./brands"
-import * as light from "./light"
-import * as regular from "./regular"
-import * as solid from "./solid"
 import { IconType, IconProps, IconFn } from "./model"
 import { IconStyled } from "./IconStyled"
-
-export function Icon<Type extends IconType>(props: IconProps<Type>): JSX.Element {
+import { copyToFontAwesomeDirectory, createFontAwesomeDirectory } from "./functions"
+const icons = {}
+try {
+  // @ts-ignore
+  import * as icons from "../../../src/fontAwesome"
+} catch(err) {
+  createFontAwesomeDirectory()
+}
+export function Icon<Type extends IconType>(props: IconProps<Type>): JSX.Element | null {
   const { iconType, iconName } = props
-  let Svg: IconFn
-  switch (iconType) {
-    case "brands":
-      Svg = brands[iconName as keyof typeof brands]
-      break
-    case "light":
-      Svg = light[iconName as keyof typeof light]
-      break
-    case "solid":
-      Svg = solid[iconName as keyof typeof solid]
-      break
-    case "regular":
-      Svg = regular[iconName as keyof typeof regular]
-      break
-    default:
-      Svg = light[iconName as keyof typeof light]
-      break
+  let Svg: IconFn = icons[`${iconType}-${iconName}.tsx`]
+  if (Svg) {
+    return (
+      <IconStyled>
+        <Svg />
+      </IconStyled>
+    )
+  } else {
+    copyToFontAwesomeDirectory(iconType, iconName)
+    return null
   }
-  return (
-    <IconStyled>
-      <Svg />
-    </IconStyled>
-  )
+  
 }
