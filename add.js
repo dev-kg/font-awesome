@@ -23,7 +23,7 @@ async function writeFile(path, data) {
   const t = faTag.charAt(2)
   const type = t === "b" ? "brands" : t === "r" ? "regular" : t ==="l" ? "light"  : "solid"
   const name = faTag.replace(`fa${t}-` , "")
-  const file = await readFile(`./src/${type}/${name}.tsx`)
+  const file = await readFile(`./node_modules/font-awesome/unused/${type}/${name}.tsx`)
   return writeFile(`./src/icons/fa${t}-${name}.tsx`, file)
 }
 
