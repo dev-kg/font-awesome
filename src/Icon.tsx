@@ -14,6 +14,6 @@ export function Icon<Type extends IconType>(props: IconProps<Type>): JSX.Element
       </IconStyled>
     )
   } else {
-    throw new Error(`yarn add-fa fa${type.charAt(0)}-${name}`)
+    throw new Error(`type this in the command line: "yarn add-fa fa${type.charAt(0)}-${name}"`)
   }
 }
