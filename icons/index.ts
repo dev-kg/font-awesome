@@ -5,6 +5,6 @@ export const icons = allJSfilesInFolder.keys().reduce((map: { [key: string]: str
   if (file === './index.ts') {
     return map
   }
-  map[file.slice(2, -4)] = allJSfilesInFolder(file)
+  map[file.slice(2, -4)] = allJSfilesInFolder(file).default
   return map
 }, {})
