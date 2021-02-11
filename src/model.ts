@@ -7,6 +7,7 @@ export interface IconProps<Type extends IconType> {
   name: Type extends "brands"
   ? Brands
   : Light
+  onClick?: (evt: React.MouseEvent<HTMLDivElement>) => void
   svgProps?: Partial<SVGAttributes<{}>>
 }
 export type IconFn = (props: SVGAttributes<{}>) => JSX.Element
