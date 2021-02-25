@@ -4,7 +4,7 @@ import { icons } from "@/icons"
 import { IconType, IconProps, IconFn } from "./model"
 import { IconStyled } from "./IconStyled"
 
-export function Icon<Type extends IconType>(props: IconProps<Type>): JSX.Element | never {
+export function Icon(props: IconProps): JSX.Element | never {
   const { type = "light", name, onClick } = props
   const Svg: IconFn = icons[`fa${type.charAt(0)}-${name}`]
   if (Svg) {
